@@ -65,6 +65,9 @@ endif()
 # libtommath
 if(NOT TARGET libtommath)
     add_sourcepp_remote_library(libtommath https://github.com/craftablescience/libtommath 03101d4556acd45175d5cfe0575601cf6acadef2 OVERRIDE_FIND_PACKAGE EXCLUDE_FROM_ALL)
+    if(MSVC)
+        target_sources(libtommath PRIVATE "${CMAKE_CURRENT_LIST_DIR}/tommath_msvc_stub.c")
+    endif()
 endif()
 
 
